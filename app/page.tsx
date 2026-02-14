@@ -3,19 +3,31 @@ import Overlay from "./components/Overlay";
 import About from "./components/About";
 import Experience from "./components/Experience";
 import Projects from "./components/Projects";
+import Navbar from "./components/Navbar";
 
 export default function Home() {
   return (
-    <main className="bg-[#121212] min-h-screen text-white">
-      <div className="relative">
+    <main className="bg-[#121212] min-h-screen text-white relative">
+      <Navbar />
+
+      <section id="home" className="relative">
         <Overlay />
         <ScrollyCanvas numFrames={192} />
-      </div>
-      <About />
-      <Experience />
-      <Projects />
+      </section>
 
-      <div className="h-screen flex items-center justify-center bg-[#121212] border-t border-white/5">
+      <section id="about">
+        <About />
+      </section>
+
+      <section id="experience">
+        <Experience />
+      </section>
+
+      <section id="projects">
+        <Projects />
+      </section>
+
+      <section id="contact" className="h-screen flex items-center justify-center bg-[#121212] border-t border-white/5">
         <div className="text-center">
           <h2 className="text-4xl font-bold tracking-tight text-white/50">
             Let's work together.
@@ -24,7 +36,7 @@ export default function Home() {
             harshdeo802@gmail.com
           </a>
         </div>
-      </div>
+      </section>
     </main>
   );
 }
