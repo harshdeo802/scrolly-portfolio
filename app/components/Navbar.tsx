@@ -113,6 +113,8 @@ export default function Navbar() {
                 </nav>
             </div>
 
+
+
             {/* Scroll To Top Button (Visible on Mobile & Desktop) */}
             <div className="fixed bottom-8 right-8 z-50">
                 {showScrollTop && (
