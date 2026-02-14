@@ -61,7 +61,6 @@ export default function About() {
                 <h2 className="text-3xl md:text-5xl font-bold mb-8 tracking-tight text-white/90">
                     About Me
                 </h2>
-<<<<<<< HEAD
                 <p className="text-xl leading-relaxed text-gray-300 mb-8 max-w-3xl">
                     I am a <span className="text-purple-400 font-semibold">performance-focused C++ Software Engineer</span> with 2.5+ years of professional experience building efficient and reliable software systems. My core expertise lies in modern C++, multithreading, performance optimization, and debugging complex runtime issues. I enjoy solving challenging engineering problems and building scalable, maintainable software used in production environments.
                 </p>
@@ -72,13 +71,6 @@ export default function About() {
                         Seeking opportunities as a C++ Software Engineer where I can contribute to building high-quality products, optimize system performance, and solve complex engineering problems.
                     </p>
                 </div>
-
-=======
-                <p className="text-xl leading-relaxed text-gray-300 mb-16 max-w-3xl">
-                    I am a <span className="text-purple-400 font-semibold">performance-focused C++ Software Engineer</span> with 2.5+ years of professional experience building efficient and reliable software systems. My core expertise lies in modern C++, multithreading, performance optimization, and debugging complex runtime issues.
-                </p>
-
->>>>>>> 21a1e40bc214ad7a4b6b172e8f13a148232ddc9b
                 <div className="space-y-16">
                     {/* Languages - Logo Grid */}
                     <div>

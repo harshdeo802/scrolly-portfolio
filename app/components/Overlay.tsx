@@ -10,8 +10,8 @@ export default function Overlay() {
         offset: ["start start", "end end"]
     });
 
-    const opacity1 = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-    const y1 = useTransform(scrollYProgress, [0, 0.2], [0, -50]);
+    const opacity1 = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
+    const y1 = useTransform(scrollYProgress, [0, 0.1], [0, -50]);
 
     const opacity2 = useTransform(scrollYProgress, [0.2, 0.3, 0.5], [0, 1, 0]);
     const y2 = useTransform(scrollYProgress, [0.2, 0.3, 0.5], [50, 0, -50]);

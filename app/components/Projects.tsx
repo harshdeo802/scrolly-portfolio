@@ -35,30 +35,28 @@ export default function Projects() {
                     Impact & Achievements
                 </h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {projects.map((project, index) => (
                         <div
                             key={index}
-                            className={`group relative p-8 rounded-2xl border border-white/10 overflow-hidden transform transition-all duration-500 hover:scale-[1.02] hover:border-white/20`}
+                            className={`group relative p-5 rounded-xl border border-white/10 overflow-hidden transform transition-all duration-500 hover:scale-[1.02] hover:border-white/20`}
                         >
                             {/* Glass Background */}
                             <div className="absolute inset-0 backdrop-blur-3xl bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-30 transition-opacity duration-500`} />
 
-                            <div className="relative z-10 flex flex-col h-full justify-between min-h-[300px]">
+                            <div className="relative z-10 flex flex-col h-full justify-between min-h-[240px]">
                                 <div>
-                                    <span className="text-xs font-mono text-gray-400 tracking-widest uppercase border border-gray-700 px-3 py-1 rounded-full">
+                                    <span className="text-[10px] font-mono text-gray-400 tracking-widest uppercase border border-gray-700 px-2 py-0.5 rounded-full">
                                         {project.category}
                                     </span>
-                                    <h3 className="text-3xl font-bold text-white mt-6 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-400 transition-colors">
+                                    <h3 className="text-2xl font-bold text-white mt-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-400 transition-colors">
                                         {project.title}
                                     </h3>
-                                    <p className="text-gray-400 mt-4 text-lg">
+                                    <p className="text-gray-400 mt-3 text-sm leading-relaxed">
                                         {project.description}
                                     </p>
                                 </div>
-
-
                             </div>
                         </div>
                     ))}
