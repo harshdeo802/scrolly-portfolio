@@ -5,9 +5,14 @@ import { useEffect, useRef, useState } from "react";
 
 export default function ScrollyCanvas({ numFrames }: { numFrames: number }) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
     const [images, setImages] = useState<HTMLImageElement[]>([]);
-    const [imagesLoaded, setImagesLoaded] = useState<boolean[]>([]);
-    const { scrollYProgress } = useScroll();
+    const [imagesLoaded, setImagesLoaded] = useState<boolean[]>(new Array(numFrames).fill(false));
+
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start start", "end end"]
+    });
 
     // Smooth out the scroll progress with a spring
     // mass: inertia, stiffness: rigidity, damping: friction
@@ -87,7 +92,7 @@ export default function ScrollyCanvas({ numFrames }: { numFrames: number }) {
     });
 
     return (
-        <div className="h-[500vh] relative">
+        <div ref={containerRef} className="h-[500vh] relative">
             <div className="sticky top-0 h-screen w-full overflow-hidden bg-[#121212]">
                 <canvas ref={canvasRef} className="block w-full h-full" />
             </div>
