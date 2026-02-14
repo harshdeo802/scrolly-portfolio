@@ -10,14 +10,21 @@ export default function Overlay() {
         offset: ["start start", "end end"]
     });
 
-    const opacity1 = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
-    const y1 = useTransform(scrollYProgress, [0, 0.1], [0, -50]);
+    // Section 1: Name
+    // Stays visible 0->0.25, Fades out 0.25->0.35. (Ends at 0.35)
+    const opacity1 = useTransform(scrollYProgress, [0, 0.25, 0.35], [1, 1, 0]);
+    const y1 = useTransform(scrollYProgress, [0, 0.35], [0, -150]);
 
-    const opacity2 = useTransform(scrollYProgress, [0.2, 0.3, 0.5], [0, 1, 0]);
-    const y2 = useTransform(scrollYProgress, [0.2, 0.3, 0.5], [50, 0, -50]);
+    // ** GAP of 0.05 (5% scroll) where both are opacity 0 **
 
-    const opacity3 = useTransform(scrollYProgress, [0.5, 0.6, 0.8], [0, 1, 0]);
-    const y3 = useTransform(scrollYProgress, [0.5, 0.6, 0.8], [50, 0, -50]);
+    // Section 2: Building high-performance systems
+    // Starts at 0.40. Fades in 0.40->0.50, Stays visible 0.50->0.80, Fades out 0.80->0.90
+    const opacity2 = useTransform(scrollYProgress, [0.40, 0.50, 0.80, 0.90], [0, 1, 1, 0]);
+    const y2 = useTransform(scrollYProgress, [0.40, 0.90], [100, 0]); // Enters from bottom
+
+    // Section 3: Multithreading...
+    const opacity3 = useTransform(scrollYProgress, [0.90, 0.95, 1], [0, 1, 1]);
+    const y3 = useTransform(scrollYProgress, [0.90, 1], [100, 0]);
 
     return (
         <div ref={containerRef} className="absolute top-0 left-0 w-full h-[500vh] pointer-events-none z-10">
@@ -38,11 +45,11 @@ export default function Overlay() {
                 {/* Section 2 */}
                 <motion.div
                     style={{ opacity: opacity2, y: y2 }}
-                    className="absolute top-1/2 left-10 md:left-32 -translate-y-1/2 max-w-lg"
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:left-32 md:translate-x-0 md:translate-y-[-50%] text-center md:text-left w-full px-4 md:w-auto"
                 >
-                    <h2 className="text-5xl md:text-7xl font-bold text-white leading-tight">
+                    <h2 className="text-4xl md:text-7xl font-bold text-white leading-tight break-words">
                         Building <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 pb-2 inline-block">
                             high-performance
                         </span> <br />
                         systems.
@@ -52,9 +59,9 @@ export default function Overlay() {
                 {/* Section 3 */}
                 <motion.div
                     style={{ opacity: opacity3, y: y3 }}
-                    className="absolute top-1/2 right-10 md:right-32 -translate-y-1/2 max-w-lg text-right"
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:left-auto md:right-32 md:translate-x-0 md:translate-y-[-50%] text-center md:text-right w-full px-4 md:w-auto"
                 >
-                    <h2 className="text-5xl md:text-7xl font-bold text-white leading-tight">
+                    <h2 className="text-4xl md:text-7xl font-bold text-white leading-tight">
                         Multithreading, <br />
                         Optimization & <br />
                         Linux.
