@@ -11,20 +11,18 @@ export default function Overlay() {
     });
 
     // Section 1: Name
-    // Stays visible 0->0.25, Fades out 0.25->0.35. (Ends at 0.35)
-    const opacity1 = useTransform(scrollYProgress, [0, 0.25, 0.35], [1, 1, 0]);
-    const y1 = useTransform(scrollYProgress, [0, 0.35], [0, -150]);
-
-    // ** GAP of 0.05 (5% scroll) where both are opacity 0 **
+    // Stays visible 0->0.20, Fades out 0.20->0.30 (gone by 0.30)
+    const opacity1 = useTransform(scrollYProgress, [0, 0.20, 0.30], [1, 1, 0]);
+    const y1 = useTransform(scrollYProgress, [0, 0.30], [0, -100]);
 
     // Section 2: Building high-performance systems
-    // Starts at 0.40. Fades in 0.40->0.50, Stays visible 0.50->0.80, Fades out 0.80->0.90
-    const opacity2 = useTransform(scrollYProgress, [0.40, 0.50, 0.80, 0.90], [0, 1, 1, 0]);
-    const y2 = useTransform(scrollYProgress, [0.40, 0.90], [100, 0]); // Enters from bottom
+    // Cross-fades with Section 1: fades in 0.25->0.35, visible 0.35->0.75, fades out 0.75->0.85
+    const opacity2 = useTransform(scrollYProgress, [0.25, 0.35, 0.75, 0.85], [0, 1, 1, 0]);
+    const y2 = useTransform(scrollYProgress, [0.25, 0.85], [40, 0]); // Smaller offset for mobile
 
     // Section 3: Multithreading...
-    const opacity3 = useTransform(scrollYProgress, [0.90, 0.95, 1], [0, 1, 1]);
-    const y3 = useTransform(scrollYProgress, [0.90, 1], [100, 0]);
+    const opacity3 = useTransform(scrollYProgress, [0.85, 0.92, 1], [0, 1, 1]);
+    const y3 = useTransform(scrollYProgress, [0.85, 1], [40, 0]);
 
     return (
         <div ref={containerRef} className="absolute top-0 left-0 w-full h-[500vh] pointer-events-none z-10">
@@ -47,7 +45,7 @@ export default function Overlay() {
                     style={{ opacity: opacity2, y: y2 }}
                     className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:left-32 md:translate-x-0 md:translate-y-[-50%] text-center md:text-left w-full px-4 md:w-auto"
                 >
-                    <h2 className="text-4xl md:text-7xl font-bold text-white leading-tight break-words">
+                    <h2 className="text-3xl md:text-7xl font-bold text-white leading-tight break-words">
                         Building <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 pb-2 inline-block">
                             high-performance

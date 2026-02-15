@@ -14,6 +14,7 @@ const navItems = [
 
 export default function Navbar() {
     const [activeSection, setActiveSection] = useState("home");
+    const [showScrollTop, setShowScrollTop] = useState(false);
 
     const scrollToSection = (id: string) => {
         const element = document.getElementById(id);
@@ -25,34 +26,13 @@ export default function Navbar() {
         }
     };
 
-    const [showScrollTop, setShowScrollTop] = useState(false);
-
     useEffect(() => {
+        // Scroll handler: only toggles scroll-to-top button visibility
         const handleScroll = () => {
-            // Logic to show button only after scrolling down
             setShowScrollTop(window.scrollY > 500);
-
-            // Logic to update active section
-            const observer = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            setActiveSection(entry.target.id);
-                        }
-                    });
-                },
-                { rootMargin: "-40% 0px -60% 0px" }
-            );
-
-            navItems.forEach((item) => {
-                const element = document.getElementById(item.id);
-                if (element) observer.observe(element);
-            });
         };
 
-        window.addEventListener("scroll", handleScroll);
-
-        // Initial setup for intersection observer
+        // Single IntersectionObserver for active section tracking (created ONCE)
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
@@ -68,6 +48,8 @@ export default function Navbar() {
             const element = document.getElementById(item.id);
             if (element) observer.observe(element);
         });
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
 
         return () => {
             window.removeEventListener("scroll", handleScroll);
@@ -113,9 +95,7 @@ export default function Navbar() {
                 </nav>
             </div>
 
-
-
-            {/* Scroll To Top Button (Visible on Mobile & Desktop) */}
+            {/* Scroll To Top Button */}
             <div className="fixed bottom-8 right-8 z-50">
                 {showScrollTop && (
                     <motion.button
