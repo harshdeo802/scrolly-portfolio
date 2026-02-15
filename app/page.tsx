@@ -7,6 +7,9 @@ import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import Navbar from "./components/Navbar";
 import CursorSpotlight from "./components/CursorSpotlight";
+import AmbientMusic from "./components/AmbientMusic";
+import FeaturedProject from "./components/FeaturedProject";
+import LoadingScreen from "./components/LoadingScreen";
 import { FaLinkedin, FaEnvelope, FaInstagram } from "react-icons/fa";
 import { motion } from "framer-motion";
 
@@ -18,7 +21,9 @@ const fadeInUp = {
 export default function Home() {
   return (
     <main className="bg-[#121212] min-h-screen text-white relative">
+      <LoadingScreen />
       <CursorSpotlight />
+      <AmbientMusic />
       <Navbar />
 
       <section id="home" className="relative">
@@ -33,6 +38,9 @@ export default function Home() {
       <section id="experience">
         <Experience />
       </section>
+
+      {/* Honda 0 Series Featured Project */}
+      <FeaturedProject />
 
       {/* Quote / Motto Section — inspired by minhpham.design */}
       <section className="relative h-screen flex items-center justify-center bg-[#121212] overflow-hidden">

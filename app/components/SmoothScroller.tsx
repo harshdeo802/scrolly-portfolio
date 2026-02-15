@@ -7,6 +7,12 @@ export default function SmoothScroller({ children }: { children: React.ReactNode
     const lenisRef = useRef<Lenis | null>(null);
 
     useEffect(() => {
+        // Always start from the top on page load/refresh
+        if ("scrollRestoration" in history) {
+            history.scrollRestoration = "manual";
+        }
+        window.scrollTo(0, 0);
+
         const lenis = new Lenis({
             duration: 1.2,
             easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

@@ -106,6 +106,9 @@ export default function Projects() {
                     <p className="text-white/30 text-sm uppercase tracking-widest">
                         © {new Date().getFullYear()} Harsh Deo
                     </p>
+                    <p className="text-white/15 text-[10px] mt-2">
+                        Music by <a href="https://www.bensound.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-white/30 transition-colors">Bensound.com</a> · Benjamin Tissot
+                    </p>
                 </motion.div>
             </div>
         </div>
